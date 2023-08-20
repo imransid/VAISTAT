@@ -1,10 +1,15 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
+import { BottomTabParamList } from '../models'
+import AppBarComponent from '../components/AppBarComponent'
 
-const Chat = () => {
+type Props = BottomTabScreenProps<BottomTabParamList>
+
+const Chat = ({navigation, route}:Props) => {
   return (
     <View>
-      <Text>Chat</Text>
+      <AppBarComponent navigation={navigation} route={route}/>
     </View>
   )
 }

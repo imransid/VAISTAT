@@ -1,7 +1,7 @@
 import React from 'react'
 import { View, Text, Button } from 'react-native'
 import { StackScreenProps } from '@react-navigation/stack'
-import { RootStackParamList } from '../navigator';
+import { RootStackParamList } from '../models'
 
   
 type Props = StackScreenProps<RootStackParamList,'Login'>
@@ -16,7 +16,7 @@ const Login = ({ navigation }: Props) => {
       />
       <Button
         title="Go to Home Screen"
-        onPress={() => navigation.navigate("Home")} 
+        onPress={() => navigation.navigate('Drawer')} 
       />
     </View>
   )

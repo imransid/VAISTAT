@@ -1,13 +1,17 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
-import AppLogo from '../components/AppLogo'
+import { BottomTabParamList } from '../models';
+import AppBarComponent from '../components/AppBarComponent';
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-const Home = () => {
+type Props =  BottomTabScreenProps<BottomTabParamList>
+
+const Home = ({ navigation,route }: Props) => {
   return (
     <View>
-    <AppLogo/>
-      <Text>Home</Text>
+        <AppBarComponent navigation={navigation} route={route}/>
     </View>
+    
   )
 }
 

@@ -1,10 +1,16 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
+import AppBarComponent from '../components/AppBarComponent'
+import { BottomTabParamList } from '../models'
+import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
 
-const ActiveJob = () => {
+
+type Props = BottomTabScreenProps<BottomTabParamList>
+
+const ActiveJob = ({navigation, route}: Props) => {
   return (
     <View>
-      <Text>ActiveJob</Text>
+      <AppBarComponent navigation={navigation} route={route}/>
     </View>
   )
 }
