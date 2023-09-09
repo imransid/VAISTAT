@@ -1,20 +1,20 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-// TODO : Declear Initial State here
+// TODO : Dealer Initial State here
 
 const activeJobsSlice = createSlice({
-    name: 'activeJobsSlice',
-    initialState: {},
-    reducers:{
-        deliveredJob: () => {
-
-        },
-        notDeliveredJob: () => {
-
-        }
+  name: 'activeJobsSlice',
+  initialState: {},
+  reducers: {
+    deliveredJob: () => {
+      return 'deliveredJob';
+    },
+    notDeliveredJob: () => {
+      return 'notDeliveredJob';
     }
+  }
 });
 
-export const { deliveredJob,notDeliveredJob } = activeJobsSlice.actions;
+export const { deliveredJob, notDeliveredJob } = activeJobsSlice.actions;
 
 export const activeJobsReducer = activeJobsSlice.reducer;
