@@ -1,12 +1,12 @@
-import { View, Text } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Text, View } from 'react-native';
 
-const Registration = () => {
+const Registration = (): React.ReactNode => {
   return (
     <View>
       <Text>Registration</Text>
     </View>
-  )
-}
+  );
+};
 
-export default Registration
+export default Registration;

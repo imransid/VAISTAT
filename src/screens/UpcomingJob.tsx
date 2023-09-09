@@ -1,17 +1,18 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs'
-import AppBarComponent from '../components/AppBarComponent'
-import { BottomTabParamList } from '../models'
+import React from 'react';
+import { View } from 'react-native';
+import { type BottomTabScreenProps } from '@react-navigation/bottom-tabs';
 
-type Props = BottomTabScreenProps<BottomTabParamList>
+import AppBarComponent from '../components/AppBarComponent/AppBarComponent';
+import { type BottomTabParamList } from '../models';
 
-const UpcomingJob = ({navigation, route}: Props) => {
+type Props = BottomTabScreenProps<BottomTabParamList>;
+
+const UpcomingJob = ({ navigation, route }: Props): React.ReactNode => {
   return (
     <View>
-      <AppBarComponent navigation={navigation} route={route}/>
+      <AppBarComponent navigation={navigation} route={route} />
     </View>
-  )
-}
+  );
+};
 
-export default UpcomingJob
+export default UpcomingJob;

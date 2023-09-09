@@ -1,12 +1,12 @@
-import { View, Text, Image } from 'react-native'
-import React from 'react'
+import React from 'react';
+import { Image, View } from 'react-native';
 
-const AppLogo = () => {
+const AppLogo = (): React.ReactNode => {
   return (
     <View>
-     <Image source={require('./img/logo.png')} />
+      <Image source={require('./img/logo.png')} />
     </View>
-  )
-}
+  );
+};
 
-export default AppLogo
+export default AppLogo;

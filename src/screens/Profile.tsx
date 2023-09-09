@@ -1,20 +1,28 @@
-import { View, Image } from 'react-native'
-import React from 'react'
-import { Appbar } from 'react-native-paper'
-import { DrawerScreenProps } from '@react-navigation/drawer'
-import { DrawerParamList } from '../models'
+import React from 'react';
+import { Image, View } from 'react-native';
+import { Appbar } from 'react-native-paper';
+import { type DrawerScreenProps } from '@react-navigation/drawer';
 
-type Props =  DrawerScreenProps<DrawerParamList>
+import { type DrawerParamList } from '../models';
 
-const Profile = ({navigation}: Props) => {
+type Props = DrawerScreenProps<DrawerParamList>;
+
+const Profile = ({ navigation }: Props): React.ReactNode => {
   return (
     <View>
       <Appbar.Header>
-        <Appbar.Action icon={({}) => { return <Image source={require('./img/cross.png')}/>}} onPress={() => navigation.navigate('BottomTabs')} />
+        <Appbar.Action
+          icon={() => {
+            return <Image source={require('./img/cross.png')} />;
+          }}
+          onPress={() => {
+            navigation.navigate('BottomTabs');
+          }}
+        />
         <Appbar.Content title="Profile" />
       </Appbar.Header>
     </View>
-  )
-}
+  );
+};
 
-export default Profile
+export default Profile;
