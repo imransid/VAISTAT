@@ -1,12 +1,13 @@
 import React, { type FC } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AppStackNavigator from './AppStackNavigator';
+import AuthStackNavigator from './AuthStackNavigator';
 
-export const Navigator: FC = () => {
+const Navigator: FC = () => {
   return (
     <NavigationContainer>
-      <AppStackNavigator />
+      {/* <AppStackNavigator /> */}
+      <AuthStackNavigator />
     </NavigationContainer>
   );
 };
