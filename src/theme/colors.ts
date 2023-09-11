@@ -7,7 +7,7 @@ const palette = {
   color4: '#000000',
   color5: '#FFFFFF',
   transparent: 'transparent',
-  color6: '#4CAF50',
+  color6: '#31CF77',
   color7: '#FFC107',
   color8: '#FF5252',
   color9: '#686C78',
@@ -23,6 +23,7 @@ const palette = {
 export const colors = {
   // base colors
   primary: palette.color1,
+  buttonBg: palette.color6,
   secondary: palette.color2,
   accent: palette.color3,
   // colors
