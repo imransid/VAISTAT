@@ -34,7 +34,7 @@ const CustomTextInput: React.FC<ICustomTextInputProps> = ({
         onChangeText={onChangeText}
         value={value}
         placeholder={placeholder}
-        secureTextEntry={!showPassword}
+        secureTextEntry={isPassword ? !showPassword : false}
         keyboardType={keyboardType}
       />
       {isPassword && (
