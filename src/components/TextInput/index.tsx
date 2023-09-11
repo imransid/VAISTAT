@@ -1,6 +1,9 @@
-import React from 'react';
-import { TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { TextInput, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 import PropTypes from 'prop-types';
+
+import { colors } from '../../theme/colors';
 
 import Styles from './Styles';
 
@@ -19,10 +22,10 @@ const CustomTextInput: React.FC<ICustomTextInputProps> = ({
   keyboardType,
   isPassword = false
 }) => {
-  // const [showPassword, setShowPassword] = useState(false);
-  // const togglePasswordVisibility = () => {
-  //     setShowPassword(!showPassword);
-  // };
+  const [showPassword, setShowPassword] = useState(false);
+  const togglePasswordVisibility = (): void => {
+    setShowPassword(!showPassword);
+  };
 
   return (
     <>
@@ -31,19 +34,19 @@ const CustomTextInput: React.FC<ICustomTextInputProps> = ({
         onChangeText={onChangeText}
         value={value}
         placeholder={placeholder}
-        // secureTextEntry={!showPassword}
+        secureTextEntry={!showPassword}
         keyboardType={keyboardType}
       />
-      {/* {
-                isPassword && <TouchableOpacity onPress={togglePasswordVisibility}>
-                    <Icon
-                        name={showPassword ? "eye" : "eyeo"}
-                        size={30}
-                        color={colors.iconEye}
-                        style={Styles.icon}
-                    />
-                </TouchableOpacity>
-            } */}
+      {isPassword && (
+        <TouchableOpacity onPress={togglePasswordVisibility}>
+          <Icon
+            name={showPassword ? 'eye' : 'eyeo'}
+            size={30}
+            color={colors.iconEye}
+            style={Styles.icon}
+          />
+        </TouchableOpacity>
+      )}
     </>
   );
 };
