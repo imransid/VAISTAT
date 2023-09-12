@@ -1,10 +1,15 @@
-export interface RootStackParamList {
-  Login: undefined;
-  Registration: undefined;
-  Drawer: undefined;
+import { type ParamListBase } from '@react-navigation/native';
+
+export interface RootStackParamList extends ParamListBase {
+  SignIn: undefined;
+  SignUp: undefined;
 }
 
-export interface BottomTabParamList {
+export interface AppStackParamList extends ParamListBase {
+  Home: undefined;
+}
+
+export interface BottomTabParamList extends ParamListBase {
   Home: undefined;
   UpcomingJobs: undefined;
   ActiveJobs: undefined;
@@ -12,7 +17,7 @@ export interface BottomTabParamList {
   TaskJobs: undefined;
 }
 
-export interface DrawerParamList {
+export interface DrawerParamList extends ParamListBase {
   BottomTabs: undefined;
   Profile: undefined;
   Settings: undefined;
