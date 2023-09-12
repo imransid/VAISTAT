@@ -8,7 +8,7 @@ import Chat from '@/screens/Chat';
 import TaskJob from '@/screens/TaskJob';
 import UpcomingJob from '@/screens/UpcomingJob';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 export const BottomTabNavigator: FC = () => {
   return (
