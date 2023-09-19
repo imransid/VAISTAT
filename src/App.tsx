@@ -1,10 +1,11 @@
 import React, { type FC } from 'react';
 import { MD3LightTheme as DefaultTheme, PaperProvider } from 'react-native-paper';
 import { Provider as StoreProvider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 
 import Navigator from '../src/navigators';
 
-import { store } from './store';
+import { persistor, store } from './store';
 
 const theme = {
   ...DefaultTheme,
@@ -21,9 +22,11 @@ const theme = {
 export const App: FC = () => {
   return (
     <StoreProvider store={store}>
-      <PaperProvider theme={theme}>
-        <Navigator />
-      </PaperProvider>
+      <PersistGate loading={null} persistor={persistor}>
+        <PaperProvider theme={theme}>
+          <Navigator />
+        </PaperProvider>
+      </PersistGate>
     </StoreProvider>
     // <Provider store={store.store}>
     //     <PersistGate loading={null} persistor={store.persistor}>
