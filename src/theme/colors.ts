@@ -17,7 +17,8 @@ const palette = {
   color13: '#f5f5f5',
   color14: '#0B0B0B',
   color15: '#F0F0F0',
-  color16: '#6A6A6A'
+  color16: '#6A6A6A',
+  color17: '#e0e0e0d9'
 };
 
 export const colors = {
@@ -40,5 +41,6 @@ export const colors = {
   background: palette.color13,
   foreground: palette.color14,
   inputBack: palette.color15,
-  iconEye: palette.color16
+  iconEye: palette.color16,
+  extraLightGray: palette.color17
 };

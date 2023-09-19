@@ -1,6 +1,6 @@
-import ActiveJob from './ActiveJob';
+import FAQ from './FAQ';
 import { HomeScreen } from './Home';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-export { ActiveJob, HomeScreen, SignIn, SignUp };
+export { FAQ, HomeScreen, SignIn, SignUp };
