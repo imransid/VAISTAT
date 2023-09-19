@@ -7,14 +7,16 @@ interface ICustomTextInputProps {
   txt: string;
   color?: string;
   variant?: string;
+  fontWeight?: 'normal' | 'bold';
 }
 
 const CustomTextItem: React.FC<ICustomTextInputProps> = ({
   txt,
   color = colors.iconEye,
-  variant = 'labelMedium'
+  variant = 'labelMedium',
+  fontWeight
 }) => (
-  <Text style={{ color }} variant={variant}>
+  <Text style={{ color, fontWeight }} variant={variant}>
     {txt}
   </Text>
 );
