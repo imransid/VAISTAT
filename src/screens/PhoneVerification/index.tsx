@@ -8,7 +8,6 @@ import { colors } from '@/theme/colors';
 import Styles from './Styles';
 const PhoneVerification: React.FC = () => {
   const [phoneInserted] = useState(false);
-  // setPhoneInserted
   const [phone, setphone] = useState('');
 
   return (
