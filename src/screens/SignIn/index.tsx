@@ -1,17 +1,26 @@
 import React from 'react';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { Text } from 'react-native-paper';
+import { type StackScreenProps } from '@react-navigation/stack';
 
 import { FBIcon, Google, LockUser, Logo } from '@/assets';
 import { Button, Checkbox, TextInput, TextItem } from '@/components';
+import { type AuthStackParamList } from '@/models';
 import { colors } from '@/theme/colors';
 
 import Styles from './Styles';
-const SignIn: React.FC = () => {
+
+type Props = StackScreenProps<AuthStackParamList>;
+
+const SignIn: React.FC<Props> = ({ navigation }: Props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [status, setCheck] = React.useState(false);
+
+  const goToPage = (routeName: string): void => {
+    navigation.navigate(routeName);
+  };
 
   return (
     <Grid style={Styles.container}>
@@ -58,7 +67,14 @@ const SignIn: React.FC = () => {
       </Row>
 
       <Row style={Styles.input}>
-        <Button txt="Login" />
+        {/* <TouchableOpacity onPress={()=> navigation.navigate('AppStack')}> */}
+        <Button
+          txt="Login"
+          pressFunction={() => {
+            goToPage('AppStack');
+          }}
+        />
+        {/* </TouchableOpacity> */}
       </Row>
 
       <Row style={Styles.iconBox}>
@@ -93,7 +109,12 @@ const SignIn: React.FC = () => {
         <TextItem txt={"Don't have a account? "} color={colors.gray} variant="bodyMedium" />
       </Row>
       <Row style={Styles.buttonTxt}>
-        <TextItem txt={'Sign up here'} color={colors.primary} variant="bodyMedium" />
+        <TouchableOpacity
+          onPress={() => {
+            goToPage('SignUp');
+          }}>
+          <TextItem txt={'Sign up here'} color={colors.primary} variant="bodyMedium" />
+        </TouchableOpacity>
       </Row>
 
       <Row style={Styles.divider} />
@@ -101,7 +122,12 @@ const SignIn: React.FC = () => {
       <Row style={Styles.divider} />
 
       <Row style={Styles.buttonTxt}>
-        <TextItem txt={'FAQ'} color={colors.primary} variant="bodyLarge" />
+        <TouchableOpacity
+          onPress={() => {
+            goToPage('FAQ');
+          }}>
+          <TextItem txt={'FAQ'} color={colors.primary} variant="bodyLarge" />
+        </TouchableOpacity>
       </Row>
     </Grid>
   );
