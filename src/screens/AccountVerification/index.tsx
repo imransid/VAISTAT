@@ -1,6 +1,7 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
+import { launchCamera, launchImageLibrary } from 'react-native-image-picker';
 import { Modal, PaperProvider, Portal, Text } from 'react-native-paper';
 
 import { Camera, GreenCheck, LeftArrow } from '@/assets';
@@ -15,49 +16,49 @@ interface IButtonIconWithText {
   status: boolean;
 }
 
-// interface Action {
-//     title: string;
-//     type: 'capture' | 'library';
-//     options: any; // Adjust this type as needed
-// }
+interface Action {
+  title: string;
+  type: 'capture' | 'library';
+  options: any; // Adjust this type as needed
+}
 
 const AccountVerification: React.FC = () => {
   useImagePicker();
 
   // Platform.OS !== 'ios' && useImagePicker()
 
-  // const includeExtra = true;
-  // // const actions: Action[] = [
-  // //     {
-  // //         title: 'Take Image',
-  // //         type: 'capture',
-  // //         options: {
-  // //             saveToPhotos: true,
-  // //             mediaType: 'photo',
-  // //             includeBase64: false,
-  // //             includeExtra
-  // //         }
-  // //     },
-  // //     {
-  // //         title: 'Select Image',
-  // //         type: 'library',
-  // //         options: {
-  // //             selectionLimit: 0,
-  // //             mediaType: 'photo',
-  // //             includeBase64: false,
-  // //             includeExtra
-  // //         }
-  // //     },
-  // //     {
-  // //         title: 'Select Image or Video\n(mixed)',
-  // //         type: 'library',
-  // //         options: {
-  // //             selectionLimit: 0,
-  // //             mediaType: 'mixed',
-  // //             includeExtra
-  // //         }
-  // //     }
-  // // ];
+  const includeExtra = true;
+  const actions: Action[] = [
+    {
+      title: 'Take Image',
+      type: 'capture',
+      options: {
+        saveToPhotos: true,
+        mediaType: 'photo',
+        includeBase64: false,
+        includeExtra
+      }
+    },
+    {
+      title: 'Select Image',
+      type: 'library',
+      options: {
+        selectionLimit: 0,
+        mediaType: 'photo',
+        includeBase64: false,
+        includeExtra
+      }
+    },
+    {
+      title: 'Select Image or Video\n(mixed)',
+      type: 'library',
+      options: {
+        selectionLimit: 0,
+        mediaType: 'mixed',
+        includeExtra
+      }
+    }
+  ];
 
   // useEffect(() => {
 
@@ -75,22 +76,22 @@ const AccountVerification: React.FC = () => {
   // }
   // }, [useImagePicker]);
 
-  // const OnButtonPress = async (): Promise<void> => {
-  //     try {
-  //         await launchCamera(actions[0].options);
-  //         // console.log("result", result)
-  //         setVisible(false);
-  //     } catch (error) {
-  //         // Handle any errors that might occur during the camera launch
-  //         console.error('Error launching camera:', error);
-  //     }
-  // };
+  const OnButtonPress = async (): Promise<void> => {
+    try {
+      await launchCamera(actions[0].options);
+      // console.log("result", result)
+      setVisible(false);
+    } catch (error) {
+      // Handle any errors that might occur during the camera launch
+      console.error('Error launching camera:', error);
+    }
+  };
 
-  // const OpenGlary = async (): Promise<void> => {
-  //     await launchImageLibrary(actions[0].options);
-  //     // console.log("result", result)
-  //     setVisible(false)
-  // }
+  const OpenGlary = async (): Promise<void> => {
+    await launchImageLibrary(actions[0].options);
+    // console.log("result", result)
+    setVisible(false);
+  };
 
   const [visible, setVisible] = React.useState(false);
 
@@ -135,14 +136,23 @@ const AccountVerification: React.FC = () => {
             color={colors.black}
           />
           <View style={Styles.Space}></View>
-          {/* <TouchableOpacity onPress={() => void OnButtonPress()
-                    }>
-                        <TextItem txt={'Take a picture'} variant='bodyMedium' color={colors.black} />
-                    </TouchableOpacity>
-                    <View style={Styles.Space}></View>
-                    <TouchableOpacity onPress={() => void OpenGlary()}>
-                        <TextItem txt={'Choose from gallery'} variant='bodyMedium' color={colors.black} />
-                    </TouchableOpacity> */}
+          <TouchableOpacity
+            onPress={() => {
+              OnButtonPress().catch(error => {
+                console.error('Error getting OnButtonPress:', error);
+              });
+            }}>
+            <TextItem txt={'Take a picture'} variant="bodyMedium" color={colors.black} />
+          </TouchableOpacity>
+          <View style={Styles.Space}></View>
+          <TouchableOpacity
+            onPress={() => {
+              OpenGlary().catch(error => {
+                console.error('Error getting OpenGlary:', error);
+              });
+            }}>
+            <TextItem txt={'Choose from gallery'} variant="bodyMedium" color={colors.black} />
+          </TouchableOpacity>
         </Modal>
       </Portal>
       <View style={Styles.mainContainer}>
