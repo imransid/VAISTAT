@@ -1,52 +1,116 @@
-import React, { type FC } from 'react';
-import Icon from 'react-native-vector-icons/Ionicons';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import React, { type FC, useState } from 'react';
+import { Image } from 'react-native';
+import { Divider, Drawer as PaperDrawer, Switch } from 'react-native-paper';
+import {
+  createDrawerNavigator,
+  type DrawerContentComponentProps,
+  DrawerContentScrollView
+} from '@react-navigation/drawer';
 
-import { CustomDrawer } from '@/components';
+import { TextItem } from '@/components';
 
-import { colors } from '../theme/colors';
+import { type DrawerParamList } from '../models';
+import Profile from '../screens/Profile';
+import Setting from '../screens/Setting';
 
 import BottomTabNavigator from './BottomTabNavigator';
 import { Routes } from './ROUTES';
 
-const Drawer = createDrawerNavigator();
+const Drawer = createDrawerNavigator<DrawerParamList>();
 
-export const DrawerNavigator: FC = () => {
+const CustomDrawerContent: FC<DrawerContentComponentProps> = (
+  props: DrawerContentComponentProps
+) => {
+  const [isSwitchOn, setIsSwitchOn] = useState<boolean>(false);
+
+  const onToggleSwitch = (): void => {
+    setIsSwitchOn(!isSwitchOn);
+  };
+
+  // const {navigation} = useNavigation<StackScreenProps<RootStackParamList>>()
+
   return (
-    <Drawer.Navigator
-      drawerContent={props => <CustomDrawer {...props} />}
-      screenOptions={{
-        headerShown: false,
-        drawerActiveBackgroundColor: colors.primary,
-        drawerActiveTintColor: colors.white,
-        drawerLabelStyle: {
-          marginLeft: -20
-        }
-      }}>
-      <Drawer.Screen
-        name={Routes.HOME_DRAWER}
-        component={BottomTabNavigator}
-        options={{
-          title: 'Home',
-          drawerIcon: ({ color }) => <Icon name="home-sharp" size={18} color={color} />
+    <DrawerContentScrollView {...props}>
+      {/* <DrawerItemList {...props} /> */}
+
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/cross.png')} />;
+        }}
+        label="MENU"
+        onPress={(): void => {
+          props.navigation.closeDrawer();
         }}
       />
-      {/* <Drawer.Screen
-        name={Routes.WALLET_DRAWER}
-        component={HomeScreen}
-        options={{
-          title: 'Wallet',
-          drawerIcon: ({ color }) => <Icon name="wallet" size={18} color={color} />
+      <Divider />
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/car.png')} />;
         }}
-      /> */}
-      {/* <Drawer.Screen
-        name={Routes.NOTIFICATIONS_DRAWER}
-        component={HomeScreen}
-        options={{
-          title: 'Notifications',
-          drawerIcon: ({ color }) => <Icon name="notifications" size={18} color={color} />
+        label="Status"
+        right={() => {
+          return (
+            <>
+              <TextItem txt={isSwitchOn ? 'Online' : 'Offline'} />
+              <Switch value={isSwitchOn} onValueChange={onToggleSwitch} />
+            </>
+          );
         }}
-      /> */}
+      />
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/img/path.png')} />;
+        }}
+        label="Optimize route"
+      />
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/img/qrCode.png')} />;
+        }}
+        label="Scan QR Code"
+      />
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/img/barcode.png')} />;
+        }}
+        label="Show barcode"
+      />
+
+      <Divider />
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/img/user.png')} />;
+        }}
+        label="Profile"
+        onPress={() => {
+          props.navigation.navigate(Routes.PROFILE);
+        }}
+      />
+      <PaperDrawer.Item
+        icon={() => {
+          return <Image source={require('../assets/img/gearSix.png')} />;
+        }}
+        label="Settings"
+        onPress={() => {
+          props.navigation.navigate(Routes.SETTINGS);
+        }}
+      />
+    </DrawerContentScrollView>
+  );
+};
+
+const DrawerNavigator: FC = () => {
+  return (
+    <Drawer.Navigator
+      initialRouteName="BottomTabs"
+      drawerContent={props => <CustomDrawerContent {...props} />}>
+      <Drawer.Screen
+        name="BottomTabs"
+        component={BottomTabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Drawer.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+      <Drawer.Screen name="Settings" component={Setting} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 };

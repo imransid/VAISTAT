@@ -1,16 +1,16 @@
 import React, { type FC } from 'react';
 import { View } from 'react-native';
-import { type BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { type StackScreenProps } from '@react-navigation/stack';
 
-import AppBarComponent from '@/components/AppBarComponent/AppBarComponent';
-import { type BottomTabParamList } from '@/models';
+import TopBar from '@/components/TopBar/TopBar';
+import { type HomePageTopStackParamList } from '@/models';
 
-type Props = BottomTabScreenProps<BottomTabParamList>;
+type Props = StackScreenProps<HomePageTopStackParamList>;
 
 const HomeScreen: FC<Props> = ({ navigation, route }: Props): React.ReactNode => {
   return (
     <View>
-      <AppBarComponent navigation={navigation} route={route} />
+      <TopBar navigation={navigation} route={route} />
     </View>
   );
 };

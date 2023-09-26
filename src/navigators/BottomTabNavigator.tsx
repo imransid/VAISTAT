@@ -1,24 +1,51 @@
 import React, { type FC } from 'react';
-import { Image } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Badge } from 'react-native-paper';
 import { type BottomTabScreenProps, createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { DrawerActions } from '@react-navigation/native';
 
 import { type BottomTabParamList } from '@/models';
-import { ActiveJob, HomeScreen } from '@/screens';
+import { ActiveJob } from '@/screens';
 import Chat from '@/screens/Chat';
 import TaskJob from '@/screens/TaskJob';
 import UpcomingJob from '@/screens/UpcomingJob';
 
-const Tab = createBottomTabNavigator();
+import HomePageTopStackNavigator from './HomePageTopStackNavigator';
+import Styles from './style';
+
+const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 export const BottomTabNavigator: FC = () => {
   return (
     <Tab.Navigator
-      screenOptions={({ route }: BottomTabScreenProps<BottomTabParamList>) => ({
+      screenOptions={({ navigation, route }: BottomTabScreenProps<BottomTabParamList>) => ({
         tabBarShowLabel: false,
-        headerShown: false,
+        headerTitle: () => {
+          return <Text style={Styles.bottomTabheaderTitle}>5 delivery</Text>;
+        },
+        headerLeft: () => {
+          return (
+            <View style={Styles.bottomTabcontainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  navigation.dispatch(DrawerActions.openDrawer);
+                }}>
+                <Image source={require('../assets/img/list.png')} />
+              </TouchableOpacity>
+              <Badge style={Styles.bottomTabbgColor}>ON</Badge>
+            </View>
+          );
+        },
+        headerRight: () => {
+          return (
+            <View style={Styles.bottomTabheaderRight}>
+              <Image source={require('../assets/img/bell.png')} />
+            </View>
+          );
+        },
         tabBarIcon: ({ focused }) => {
           switch (route.name) {
-            case 'Home':
+            case 'TopTabs':
               return focused ? (
                 <Image source={require('../assets/img//house-active.png')} />
               ) : (
@@ -57,7 +84,7 @@ export const BottomTabNavigator: FC = () => {
           }
         }
       })}>
-      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="TopTabs" component={HomePageTopStackNavigator} />
       <Tab.Screen name="UpcomingJobs" component={UpcomingJob} />
       <Tab.Screen name="ActiveJobs" component={ActiveJob} />
       <Tab.Screen name="Chat" component={Chat} />

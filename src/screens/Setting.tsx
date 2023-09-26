@@ -13,7 +13,7 @@ const Setting = ({ navigation }: Props): React.ReactNode => {
       <Appbar.Header>
         <Appbar.Action
           icon={() => {
-            return <Image source={require('./img/back.png')} />;
+            return <Image source={require('../assets/img/back.png')} />;
           }}
           onPress={() => {
             navigation.navigate('BottomTabs');

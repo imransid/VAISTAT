@@ -15,7 +15,13 @@ const Routes = {
   NOTIFICATIONS_DRAWER: 'NotificationsDrawer',
 
   /* Screens */
+  /** *Home Page Top Tab */
   HOME: 'Home',
+  DELIVERY: 'Delivery',
+  URGENTDELIVERY: 'UrgentDelivery',
+  /** *Home Page Top Tab */
+  PROFILE: 'Profile',
+  SETTINGS: 'Settings',
   WALLET: 'Wallet'
 };
 

@@ -1,16 +1,12 @@
 import React, { type FC } from 'react';
-import { View } from 'react-native';
-import { type BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { Text, View } from 'react-native';
 
-import AppBarComponent from '../../components/AppBarComponent/AppBarComponent';
-import { type BottomTabParamList } from '../../models';
+import Styles from './style';
 
-type Props = BottomTabScreenProps<BottomTabParamList>;
-
-const ActiveJob: FC<Props> = ({ navigation, route }: Props): React.ReactNode => {
+const ActiveJob: FC = (): React.ReactNode => {
   return (
-    <View>
-      <AppBarComponent navigation={navigation} route={route} />
+    <View style={Styles.container}>
+      <Text>Active Jobs</Text>
     </View>
   );
 };
