@@ -7,5 +7,8 @@ import ArrowUP from './Icons/ArrowUp';
 import ArrowDown from './Icons/ArrowDown';
 import CalendarBlank from './Icons/CalendarBlank';
 import MapPin from './Icons/MapPin';
+import LeftArrow from './Icons/LeftArrow';
+import Camera from './Icons/Camera';
+import GreenCheck from './Icons/GreenCheck';
 
-export { Logo, FBIcon, Google, LockUser, Back, ArrowUP, ArrowDown, CalendarBlank, MapPin };
+export { Logo, FBIcon, Google, LockUser, Back, ArrowUP,ArrowDown, CalendarBlank, MapPin, LeftArrow, Camera, GreenCheck };
