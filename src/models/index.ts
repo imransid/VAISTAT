@@ -5,6 +5,16 @@ export interface RootStackParamList extends ParamListBase {
   SignUp: undefined;
 }
 
+export interface AuthStackParamList extends ParamListBase {
+  AccountVerification: undefined;
+  OTPVerification: undefined;
+  PhoneVerification: undefined;
+  FAQ: undefined;
+  SignUp: undefined;
+  SignIn: undefined;
+  AppStack: undefined;
+}
+
 export interface AppStackParamList extends ParamListBase {
   Home: undefined;
 }

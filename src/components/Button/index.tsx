@@ -11,13 +11,17 @@ import Styles from './Styles';
 interface ICustomTextInputProps {
   txt: string;
   type?: string;
+  pressFunction?: () => void;
 }
 
 const CustomButtonItem: React.FC<ICustomTextInputProps> = ({
   txt,
-  type = EButtonType.GreenBtn
+  type = EButtonType.GreenBtn,
+  pressFunction
 }) => (
-  <TouchableOpacity style={type === EButtonType.GreenBtn ? Styles.buttonGreen : Styles.buttonWhite}>
+  <TouchableOpacity
+    style={type === EButtonType.GreenBtn ? Styles.buttonGreen : Styles.buttonWhite}
+    onPress={pressFunction}>
     <TextItem txt={txt} color={type === EButtonType.GreenBtn ? colors.white : colors.black} />
   </TouchableOpacity>
 );
