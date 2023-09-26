@@ -44,6 +44,10 @@ const Styles = ScaledSheet.create({
     width: 10, // Set the width of the divider
     backgroundColor: colors.darkGray, // Set the color of the divider
     marginHorizontal: 10 // Adjust the spacing as needed
+  },
+  Space: {
+    width: '100%',
+    height: 10
   }
 });
 

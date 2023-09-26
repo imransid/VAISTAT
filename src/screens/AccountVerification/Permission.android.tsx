@@ -1,67 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { PermissionsAndroid } from 'react-native';
-import { launchCamera } from 'react-native-image-picker';
 
-interface Action {
-  title: string;
-  type: 'capture' | 'library';
-  options: any; // Adjust this type as needed
-}
-
-const useImagePicker = (): void => {
-  const includeExtra = true;
-
-  const actions: Action[] = [
-    {
-      title: 'Take Image',
-      type: 'capture',
-      options: {
-        saveToPhotos: true,
-        mediaType: 'photo',
-        includeBase64: false,
-        includeExtra
-      }
-    },
-    {
-      title: 'Select Image',
-      type: 'library',
-      options: {
-        selectionLimit: 0,
-        mediaType: 'photo',
-        includeBase64: false,
-        includeExtra
-      }
-    },
-    {
-      title: 'Take Video',
-      type: 'capture',
-      options: {
-        saveToPhotos: true,
-        formatAsMp4: true,
-        mediaType: 'video',
-        includeExtra
-      }
-    },
-    {
-      title: 'Select Video',
-      type: 'library',
-      options: {
-        selectionLimit: 0,
-        mediaType: 'video',
-        formatAsMp4: true,
-        includeExtra
-      }
-    },
-    {
-      title: 'Select Image or Video\n(mixed)',
-      type: 'library',
-      options: {
-        selectionLimit: 0,
-        mediaType: 'mixed',
-        includeExtra
-      }
-    }
-  ];
+const useImagePicker = (): boolean => {
+  const [hasCameraPermission, setHasCameraPermission] = useState<boolean>(false);
 
   useEffect(() => {
     const getCameraPermission = async (): Promise<void> => {
@@ -74,17 +15,23 @@ const useImagePicker = (): void => {
           buttonPositive: 'OK'
         });
         if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-          void launchCamera(actions[0].options);
+          setHasCameraPermission(true);
         } else {
-          // console.log("Camera permission denied");
+          setHasCameraPermission(false);
         }
       } catch (err) {
-        console.warn(err);
+        setHasCameraPermission(false);
+        // Handle the error here
       }
     };
 
-    void getCameraPermission();
-  }, [actions]);
+    // Call the async function and handle the promise
+    getCameraPermission().catch(error => {
+      console.error('Error getting camera permission:', error);
+    });
+  }, []);
+
+  return hasCameraPermission;
 };
 
 export default useImagePicker;
