@@ -13,7 +13,7 @@ const Profile = ({ navigation }: Props): React.ReactNode => {
       <Appbar.Header>
         <Appbar.Action
           icon={() => {
-            return <Image source={require('./img/cross.png')} />;
+            return <Image source={require('../assets/img/cross.png')} />;
           }}
           onPress={() => {
             navigation.navigate('BottomTabs');

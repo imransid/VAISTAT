@@ -18,7 +18,10 @@ const palette = {
   color14: '#0B0B0B',
   color15: '#F0F0F0',
   color16: '#6A6A6A',
-  color17: '#e0e0e0d9'
+  color17: '#e0e0e0d9',
+  color18: '#007DFF',
+  color19: '#EA4AFA',
+  color20: '#FF9800'
 };
 
 export const colors = {
@@ -29,6 +32,9 @@ export const colors = {
   accent: palette.color3,
   // colors
   black: palette.color4,
+  blue: palette.color18,
+  pink: palette.color19,
+  orange: palette.color20,
   white: palette.color5,
   transparent: palette.transparent,
   success: palette.color6,

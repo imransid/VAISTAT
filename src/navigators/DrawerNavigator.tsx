@@ -14,6 +14,7 @@ import Profile from '../screens/Profile';
 import Setting from '../screens/Setting';
 
 import BottomTabNavigator from './BottomTabNavigator';
+import { Routes } from './ROUTES';
 
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
@@ -81,12 +82,18 @@ const CustomDrawerContent: FC<DrawerContentComponentProps> = (
           return <Image source={require('../assets/img/user.png')} />;
         }}
         label="Profile"
+        onPress={() => {
+          props.navigation.navigate(Routes.PROFILE);
+        }}
       />
       <PaperDrawer.Item
         icon={() => {
           return <Image source={require('../assets/img/gearSix.png')} />;
         }}
         label="Settings"
+        onPress={() => {
+          props.navigation.navigate(Routes.SETTINGS);
+        }}
       />
     </DrawerContentScrollView>
   );

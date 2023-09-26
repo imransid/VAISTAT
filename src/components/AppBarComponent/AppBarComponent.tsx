@@ -15,7 +15,7 @@ const AppBarComponent = ({ navigation, route }: Props): ReactElement => {
     <Appbar.Header>
       <Appbar.Action
         icon={() => {
-          return <Image source={require('../img/list.png')} />;
+          return <Image source={require('../../assets/img/list.png')} />;
         }}
         onPress={() => {
           navigation.dispatch(DrawerActions.openDrawer);
@@ -30,7 +30,7 @@ const AppBarComponent = ({ navigation, route }: Props): ReactElement => {
       <Appbar.Content title={route.name} />
       <Appbar.Action
         icon={() => {
-          return <Image source={require('../img/bell.png')} />;
+          return <Image source={require('../../assets/img/bell.png')} />;
         }}
       />
     </Appbar.Header>

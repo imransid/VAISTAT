@@ -10,11 +10,16 @@ export interface AppStackParamList extends ParamListBase {
 }
 
 export interface BottomTabParamList extends ParamListBase {
-  Home: undefined;
+  TopTabs: undefined;
   UpcomingJobs: undefined;
   ActiveJobs: undefined;
   Chat: undefined;
   TaskJobs: undefined;
+}
+export interface HomePageTopStackParamList extends ParamListBase {
+  Home: undefined;
+  Delivery: undefined;
+  UrgentDelivery: undefined;
 }
 
 export interface DrawerParamList extends ParamListBase {
