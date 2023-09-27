@@ -10,8 +10,6 @@ import {
   SignUp
 } from '@/screens';
 
-import AppStackNavigator from './AppStackNavigator';
-
 const Stack = createNativeStackNavigator();
 
 function AuthStackNav(): JSX.Element {
@@ -27,7 +25,7 @@ function AuthStackNav(): JSX.Element {
       <Stack.Screen name="PhoneVerification" component={PhoneVerification} />
       <Stack.Screen name="FAQ" component={FAQ} />
       <Stack.Screen name="SignUp" component={SignUp} />
-      <Stack.Screen name="AppStack" component={AppStackNavigator} />
+      {/* <Stack.Screen name="AppStack" component={AppStackNavigator} /> */}
     </Stack.Navigator>
   );
 }
