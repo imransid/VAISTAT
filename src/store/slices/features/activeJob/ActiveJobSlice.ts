@@ -1,16 +1,37 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // TODO : Dealer Initial State here
+interface ActivejobState {
+  jobId: number;
+  jobName: string;
+  jobDescription: string;
+  status: string;
+}
+
+const initialState: ActivejobState[] = [
+  {
+    jobId: 1,
+    jobName: 'Deliver Medicine',
+    jobDescription: 'Description .....',
+    status: 'Deliverd'
+  },
+  {
+    jobId: 2,
+    jobName: 'Deliver Injection',
+    jobDescription: 'Description .....',
+    status: 'Not deliverd'
+  }
+];
 
 const activeJobsSlice = createSlice({
   name: 'activeJobsSlice',
-  initialState: {},
+  initialState,
   reducers: {
-    deliveredJob: () => {
-      return 'deliveredJob';
+    deliveredJob: state => {
+      return state.filter(el => el.status === 'Deliverd');
     },
-    notDeliveredJob: () => {
-      return 'notDeliveredJob';
+    notDeliveredJob: state => {
+      return state.filter(el => el.status === 'Not deliverd');
     }
   }
 });
