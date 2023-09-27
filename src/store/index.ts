@@ -1,5 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import createSagaMiddleware from '@redux-saga/core';
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
+import { createLogger } from 'redux-logger';
 import {
   FLUSH,
   PAUSE,
@@ -24,6 +26,10 @@ const rootReducer = combineReducers({
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
+const sagaMiddleware = createSagaMiddleware();
+
+const middleware: any[] = [sagaMiddleware, createLogger()];
+
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: getDefaultMiddleware =>
@@ -31,7 +37,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
       }
-    })
+    }).concat(middleware) // Combine the default middleware with redux-logger
 });
 
 export const persistor = persistStore(store);
