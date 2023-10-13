@@ -1,10 +1,13 @@
 import React, { type FC } from 'react';
 import { useSelector } from 'react-redux';
-import { NavigationContainer } from '@react-navigation/native';
 
 import { type RootState } from '@/store';
 
 import AppStackNavigator from './AppStackNavigator';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { NavigationContainer } from '@react-navigation/native';
+
+// import AppStackNavigator from './AppStackNavigator';
 import AuthStackNavigator from './AuthStackNavigator';
 
 const Navigator: FC = () => {
@@ -12,8 +15,12 @@ const Navigator: FC = () => {
 
   return (
     <NavigationContainer>
-      {logStatus ? <AppStackNavigator /> : <AuthStackNavigator />}
-    </NavigationContainer>
+
+      {/* <AppStackNavigator /> */}
+      <BottomSheetModalProvider>
+        {logStatus ? <AppStackNavigator /> : <AuthStackNavigator />}
+      </BottomSheetModalProvider>
+    </NavigationContainer >
   );
 };
 
