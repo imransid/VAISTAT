@@ -1,18 +1,15 @@
 import { scale, ScaledSheet, verticalScale } from 'react-native-size-matters';
 
 const Styles = ScaledSheet.create({
-  input: {
-    height: verticalScale(50),
-    width: '100%',
-    fontSize: verticalScale(16)
-  },
-  ckhBoxItemBox: {
-    width: scale(30),
+  checkkboxInput: {
+    marginTop: verticalScale(4),
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'left'
   },
-  rememberMeTxt: {
-    justifyContent: 'center'
+  title: {
+    marginTop: verticalScale(4),
+    marginLeft: scale(32),
+    alignItems: 'left'
   }
 });
 

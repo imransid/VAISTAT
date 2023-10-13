@@ -1,20 +1,40 @@
 import React from 'react';
 import { Col, Row } from 'react-native-easy-grid';
-import { Checkbox, Text } from 'react-native-paper';
+import { Checkbox } from 'react-native-paper';
 import PropTypes from 'prop-types';
 
+import { ETitleAlignment } from '@/app-enum';
+
 import { colors } from '../../theme/colors';
+import TextItem from '../TextItem';
 
 import Styles from './Styles';
+
 interface ICustomCheckBoxProps {
   status: boolean;
   setCheck: (text: boolean) => void;
+  title?: string;
+  textColSize?: number;
+  checkBoxColSize?: number;
+  titleAlignment?: string;
 }
 
-const CustomCheckBox: React.FC<ICustomCheckBoxProps> = ({ status, setCheck }) => {
+const CustomCheckBox: React.FC<ICustomCheckBoxProps> = ({
+  status,
+  setCheck,
+  title = 'Remember me',
+  textColSize = 10,
+  checkBoxColSize = 2,
+  titleAlignment = ETitleAlignment.LEFT
+}) => {
   return (
-    <Row style={Styles.input}>
-      <Col style={Styles.ckhBoxItemBox}>
+    <Row>
+      {titleAlignment === ETitleAlignment.LEFT && (
+        <Col size={textColSize} style={Styles.title}>
+          <TextItem txt={title} color={colors.black} />
+        </Col>
+      )}
+      <Col size={checkBoxColSize} style={Styles.checkkboxInput}>
         <Checkbox
           status={status ? 'checked' : 'unchecked'}
           color={colors.gray}
@@ -24,9 +44,11 @@ const CustomCheckBox: React.FC<ICustomCheckBoxProps> = ({ status, setCheck }) =>
           }}
         />
       </Col>
-      <Col style={Styles.rememberMeTxt}>
-        <Text>Remember me</Text>
-      </Col>
+      {titleAlignment === ETitleAlignment.RIGHT && (
+        <Col size={textColSize} style={Styles.title}>
+          <TextItem txt={title} color={colors.black} />
+        </Col>
+      )}
     </Row>
   );
 };

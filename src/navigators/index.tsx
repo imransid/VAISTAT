@@ -1,13 +1,17 @@
 import React, { type FC } from 'react';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { NavigationContainer } from '@react-navigation/native';
 
-import AppStackNavigator from './AppStackNavigator';
+// import AppStackNavigator from './AppStackNavigator';
+import AuthStackNavigator from './AuthStackNavigator';
 
 const Navigator: FC = () => {
   return (
     <NavigationContainer>
-      <AppStackNavigator />
-      {/* <AuthStackNavigator /> */}
+      {/* <AppStackNavigator /> */}
+      <BottomSheetModalProvider>
+        <AuthStackNavigator />
+      </BottomSheetModalProvider>
     </NavigationContainer>
   );
 };
