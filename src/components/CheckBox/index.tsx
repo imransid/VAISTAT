@@ -35,7 +35,7 @@ const CustomCheckBox: React.FC<ICustomCheckBoxProps> = ({
         </Col>
       )}
       <Col size={checkBoxColSize} style={Styles.checkkboxInput}>
-        <Checkbox
+        <Checkbox.Android
           status={status ? 'checked' : 'unchecked'}
           color={colors.gray}
           uncheckedColor={colors.gray}

@@ -17,8 +17,10 @@ const Routes = {
   /* Screens */
   /** *Home Page Top Tab */
   HOME: 'Home',
+  DELIVERYSTACKSCREEN: 'DeliveryStackScreen',
   DELIVERY: 'Delivery',
   URGENTDELIVERY: 'UrgentDelivery',
+  DELIVERYJOBS: 'DeliveryJobs',
   /** *Home Page Top Tab */
   PROFILE: 'Profile',
   SETTINGS: 'Settings',
