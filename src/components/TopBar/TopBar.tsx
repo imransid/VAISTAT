@@ -16,14 +16,14 @@ const TopBar: FC<Props> = ({ navigation, route }: Props) => {
       case Routes.HOME:
         navigation.navigate(Routes.HOME);
         break;
-      case Routes.DELIVERY:
-        navigation.navigate(Routes.DELIVERY);
+      case Routes.DELIVERYSTACKSCREEN:
+        navigation.navigate(Routes.DELIVERYSTACKSCREEN);
         break;
       case Routes.URGENTDELIVERY:
         navigation.navigate(Routes.URGENTDELIVERY);
         break;
       default:
-        navigation.navigate(Routes.URGENTDELIVERY);
+        navigation.navigate(Routes.HOME);
     }
   };
   return (
@@ -59,7 +59,7 @@ const TopBar: FC<Props> = ({ navigation, route }: Props) => {
               ]}>
               <TouchableOpacity
                 onPress={() => {
-                  handleActive(Routes.DELIVERY);
+                  handleActive(Routes.DELIVERYSTACKSCREEN);
                 }}>
                 {route.name === Routes.DELIVERY ? (
                   <Image source={require('../../assets/img/ListBullets.png')} />
