@@ -28,8 +28,13 @@ export interface BottomTabParamList extends ParamListBase {
 }
 export interface HomePageTopStackParamList extends ParamListBase {
   Home: undefined;
-  Delivery: undefined;
+  DeliveryStackScreen: undefined;
   UrgentDelivery: undefined;
+}
+
+export interface DeliveryPageStackParamList extends ParamListBase {
+  Delivery: undefined;
+  DeliveryJobs: undefined;
 }
 
 export interface DrawerParamList extends ParamListBase {
