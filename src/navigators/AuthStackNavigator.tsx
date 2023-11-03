@@ -6,6 +6,7 @@ import {
   FAQ,
   OTPVerification,
   PhoneVerification,
+  Profile,
   SignIn,
   SignUp
 } from '@/screens';
@@ -19,6 +20,7 @@ function AuthStackNav(): JSX.Element {
       screenOptions={{
         headerShown: false
       }}>
+      <Stack.Screen name="Profile" component={Profile} />
       <Stack.Screen name="SignIn" component={SignIn} />
       <Stack.Screen name="AccountVerification" component={AccountVerification} />
       <Stack.Screen name="OTPVerification" component={OTPVerification} />
