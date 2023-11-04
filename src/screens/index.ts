@@ -7,6 +7,7 @@ import { HomeScreen } from './Home';
 import OTPVerification from './OTPVerification';
 import PhoneVerification from './PhoneVerification';
 // import Profile from './Profile';
+import ScanBarcode from './ScanBarcode';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 import UrgentDeliveryScreen from './UrgentDelivery';
@@ -21,6 +22,7 @@ export {
   OTPVerification,
   PhoneVerification,
   // Profile,
+  ScanBarcode,
   SignIn,
   SignUp,
   UrgentDeliveryScreen

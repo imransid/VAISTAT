@@ -15,6 +15,7 @@ export {
   CustomHeaderWithBack,
   CustomTabBarButton,
   FilterBottomSheet,
+  SimpleCheckBox,
   TextInput,
   TextItem,
   UnorderedList
