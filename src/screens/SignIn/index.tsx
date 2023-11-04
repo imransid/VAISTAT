@@ -135,7 +135,7 @@ const SignIn: React.FC<Props> = ({ navigation }: Props) => {
       <Row style={Styles.buttonTxt}>
         <TouchableOpacity
           onPress={() => {
-            goToPage('SignUp');
+            navigation.navigate('SignUp');
           }}>
           <TextItem txt={'Sign up here'} color={colors.primary} variant="bodyMedium" />
         </TouchableOpacity>
@@ -148,7 +148,7 @@ const SignIn: React.FC<Props> = ({ navigation }: Props) => {
       <Row style={Styles.buttonTxt}>
         <TouchableOpacity
           onPress={() => {
-            goToPage('FAQ');
+            navigation.navigate('FAQ');
           }}>
           <TextItem txt={'FAQ'} color={colors.primary} variant="bodyLarge" />
         </TouchableOpacity>
