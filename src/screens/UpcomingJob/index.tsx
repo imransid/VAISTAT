@@ -115,7 +115,7 @@ const UpcomingJobDetaiList: FC<UpcomingJobDetaiListProps> = ({
       </View>
     );
   } else if (isLoading) {
-    Alert.alert('Loading...');
+    // Alert.alert('Loading...');
   } else {
     if (data?.code === 400) {
       Alert.alert(`${data?.message ?? ''}`);
@@ -218,7 +218,7 @@ const UpcomingJob: FC<UpcommingJobScreenProps> = () => {
       Alert.alert(`${data?.message ?? 'No message'}`);
       // console.log('Upcoming jobs', data);
     } else {
-      Alert.alert(`${data != null || []}`);
+      // Alert.alert(`${data != null || []}`);
       // console.log('Upcoming jobs', data);
       renderEl = (
         <FlatList

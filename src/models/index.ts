@@ -12,7 +12,6 @@ export interface AuthStackParamList extends ParamListBase {
   FAQ: undefined;
   SignUp: undefined;
   SignIn: undefined;
-  AppStack: undefined;
 }
 
 export interface AppStackParamList extends ParamListBase {
