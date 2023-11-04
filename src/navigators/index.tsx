@@ -1,13 +1,11 @@
 import React, { type FC } from 'react';
+import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
+import { NavigationContainer } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 import { type RootState } from '@/store';
 
 import AppStackNavigator from './AppStackNavigator';
-import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { NavigationContainer } from '@react-navigation/native';
-
-// import AppStackNavigator from './AppStackNavigator';
 import AuthStackNavigator from './AuthStackNavigator';
 
 const Navigator: FC = () => {
