@@ -10,6 +10,8 @@ import MapPin from './Icons/MapPin';
 import LeftArrow from './Icons/LeftArrow';
 import Camera from './Icons/Camera';
 import GreenCheck from './Icons/GreenCheck';
+import MapTrifold from './Icons/MapTrifold';
+import MapTrifoldBlack from './Icons/MapTrifoldBlack';
 
 export {
   Logo,
@@ -23,5 +25,7 @@ export {
   MapPin,
   LeftArrow,
   Camera,
-  GreenCheck
+  GreenCheck,
+  MapTrifold,
+  MapTrifoldBlack
 };

@@ -1,5 +1,6 @@
 import { combineReducers } from '@reduxjs/toolkit';
 
+import { upcomingJobsApi } from './apis/UpcomingJobApi';
 import { activeJobsReducer } from './slices/features/activeJob/ActiveJobSlice';
 import usersReducer from './slices/features/users/slice';
 import { type UsersStateType } from './slices/features/users/types';
@@ -14,7 +15,8 @@ export interface StateType {
 
 const rootReducers = combineReducers({
   activeJobs: activeJobsReducer,
-  users: usersReducer
+  users: usersReducer,
+  [upcomingJobsApi.reducerPath]: upcomingJobsApi.reducer
 });
 
 export default rootReducers;

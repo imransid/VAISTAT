@@ -8,6 +8,7 @@ import {
 } from '@react-navigation/drawer';
 
 import { TextItem } from '@/components';
+import { ScanBarcode } from '@/screens';
 
 import { type DrawerParamList } from '../models';
 // import Profile from '../screens/Profile';
@@ -74,6 +75,9 @@ const CustomDrawerContent: FC<DrawerContentComponentProps> = (
           return <Image source={require('../assets/img/barcode.png')} />;
         }}
         label="Show barcode"
+        onPress={() => {
+          props.navigation.navigate(Routes.BARCODE);
+        }}
       />
 
       <Divider />
@@ -111,6 +115,7 @@ const DrawerNavigator: FC = () => {
       />
       {/* <Drawer.Screen name="Profile" component={Profile} options={{ headerShown: false }} /> */}
       <Drawer.Screen name="Settings" component={Setting} options={{ headerShown: false }} />
+      <Drawer.Screen name="Barcode" component={ScanBarcode} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );
 };
