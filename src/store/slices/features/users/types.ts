@@ -35,6 +35,14 @@ export interface ILogInPayload {
   password: string;
 }
 
+export interface ISignUpPayload {
+  firstName: string;
+  lastName: string;
+  email: string;
+  userName: string;
+  password: string;
+}
+
 // export type USERS = typeof USERS; // Typescript line
 
 // // (2)

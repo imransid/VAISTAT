@@ -3,7 +3,7 @@ import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 import { type IResult } from '../../../types/types';
 
 import { USERS } from './constants';
-import { type ILogInPayload, type UsersStateType } from './types';
+import { type ILogInPayload, type ISignUpPayload, type UsersStateType } from './types';
 const usersInitialState: UsersStateType = {
   user: {
     data: null,
@@ -17,6 +17,15 @@ export const usersSlice = createSlice({
   name: USERS,
   initialState: usersInitialState,
   reducers: {
+    setUserAction: (
+      state: UsersStateType,
+      { payload: ISignUpPayload }: PayloadAction<ISignUpPayload>
+    ) => {
+      state.user.isLoading = true;
+      state.user.errors = '';
+      state.user.loginStatus = false;
+    },
+
     getUserAction: (
       state: UsersStateType,
       { payload: ILogInPayload }: PayloadAction<ILogInPayload>
@@ -44,7 +53,12 @@ export const usersSlice = createSlice({
   }
 });
 
-export const { getUserAction, getUserSuccessAction, getUserErrorAction, logoutUser } =
-  usersSlice.actions;
+export const {
+  getUserAction,
+  getUserSuccessAction,
+  getUserErrorAction,
+  logoutUser,
+  setUserAction
+} = usersSlice.actions;
 
 export default usersSlice.reducer;

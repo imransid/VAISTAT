@@ -2,11 +2,14 @@ import React from 'react';
 import { ScrollView, TouchableOpacity, View } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { Text } from 'react-native-paper';
+import { useDispatch } from 'react-redux';
 import { type StackScreenProps } from '@react-navigation/stack';
 
 import { FBIcon, Google } from '@/assets';
 import { Button, TextInput, TextItem } from '@/components';
 import { type AuthStackParamList } from '@/models';
+import ToastPopUp from '@/store/sagas/Toast.android';
+import { setUserAction } from '@/store/slices/features/users/slice';
 import { colors } from '@/theme/colors';
 
 import Styles from './Styles';
@@ -14,15 +17,40 @@ import Styles from './Styles';
 type Props = StackScreenProps<AuthStackParamList>;
 
 const SignUp: React.FC<Props> = ({ navigation }: Props) => {
+  const dispatch = useDispatch();
   const [firstName, setFirstName] = React.useState('');
   const [lastName, setLastName] = React.useState('');
   const [userName, setUserName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [confirmPassword, setConfirmPassword] = React.useState('');
+  const showToast = (): void => {
+    ToastPopUp('All Field is required.');
+  };
 
   const goToPage = (routeName: string): void => {
-    navigation.navigate(routeName);
+    if (
+      email === '' ||
+      password === '' ||
+      firstName === '' ||
+      confirmPassword === '' ||
+      userName === '' ||
+      lastName === ''
+    ) {
+      showToast();
+      return;
+    }
+
+    const requestData = {
+      email, // 'Akakany@gmail.com',
+      password, // '123456',
+      firstName,
+      lastName,
+      userName
+    };
+    // navigation.navigate(routeName);
+
+    dispatch(setUserAction(requestData));
   };
 
   return (
