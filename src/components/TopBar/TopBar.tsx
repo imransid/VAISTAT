@@ -3,6 +3,7 @@ import { Image, TouchableOpacity, View } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { type StackScreenProps } from '@react-navigation/stack';
 
+import { MapTrifold, MapTrifoldBlack } from '@/assets';
 import { type HomePageTopStackParamList } from '@/models';
 import { Routes } from '@/navigators/ROUTES';
 
@@ -10,7 +11,6 @@ import Styles from './Style';
 
 type Props = StackScreenProps<HomePageTopStackParamList>;
 const TopBar: FC<Props> = ({ navigation, route }: Props) => {
-  // const [activeIndex, setActiveIndex] = useState(1);
   const handleActive = (routerName: string): void => {
     switch (routerName) {
       case Routes.HOME:
@@ -42,11 +42,7 @@ const TopBar: FC<Props> = ({ navigation, route }: Props) => {
                 onPress={() => {
                   handleActive(Routes.HOME);
                 }}>
-                {route.name === Routes.HOME ? (
-                  <Image source={require('../../assets/img/MapTrifold.png')} />
-                ) : (
-                  <Image source={require('../../assets/img/MapTrifold-black.png')} />
-                )}
+                {route.name === Routes.HOME ? <MapTrifold /> : <MapTrifoldBlack />}
               </TouchableOpacity>
             </View>
           </Col>

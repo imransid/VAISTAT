@@ -2,10 +2,10 @@ import { scale, ScaledSheet, verticalScale } from 'react-native-size-matters';
 
 const Styles = ScaledSheet.create({
   container: {
-    height: verticalScale(60),
+    height: verticalScale(50),
     width: '100%',
     // padding: scale(15),
-    paddingTop: scale(15),
+    // paddingTop: scale(15),
     paddingHorizontal: scale(20)
   },
   TextCenter: {

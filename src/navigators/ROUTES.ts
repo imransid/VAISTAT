@@ -22,7 +22,8 @@ const Routes = {
   URGENTDELIVERY: 'UrgentDelivery',
   DELIVERYJOBS: 'DeliveryJobs',
   /** *Home Page Top Tab */
-  // PROFILE: 'Profile',
+  BARCODE: 'Barcode',
+  PROFILE: 'Profile',
   SETTINGS: 'Settings',
   WALLET: 'Wallet'
 };

@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import createSagaMiddleware from '@redux-saga/core';
 import { configureStore } from '@reduxjs/toolkit';
+import { setupListeners } from '@reduxjs/toolkit/query';
 import { createLogger } from 'redux-logger';
 import {
   FLUSH,
@@ -13,6 +14,7 @@ import {
   REHYDRATE
 } from 'redux-persist';
 
+import { upcomingJobsApi } from './apis/UpcomingJobApi';
 import rootReducers from './root-reducers';
 import rootSaga from './rootSaga';
 
@@ -25,9 +27,7 @@ const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const sagaMiddleware = createSagaMiddleware();
 
-// sagaMiddleware.run(saga);
-
-const middleware: any[] = [sagaMiddleware, createLogger()];
+const middleware: any[] = [upcomingJobsApi.middleware, sagaMiddleware, createLogger()];
 
 export const store = configureStore({
   reducer: persistedReducer,
@@ -38,6 +38,7 @@ export const store = configureStore({
       }
     }).concat(middleware) // Combine the default middleware with redux-logger
 });
+setupListeners(store.dispatch);
 
 sagaMiddleware.run(rootSaga);
 

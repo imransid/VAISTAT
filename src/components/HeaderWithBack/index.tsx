@@ -27,7 +27,7 @@ const CustomHeaderWithBack: React.FC<ICustomTextInputProps> = ({ txt }) => {
         </TouchableOpacity>
       </Col>
       <Col style={Styles.TextCenter}>
-        <TextItem txt={txt} variant="titleLarge" fontWeight={'bold'} color={colors.black} />
+        <TextItem txt={txt} variant="titleMedium" fontWeight={'bold'} color={colors.black} />
       </Col>
       <Col></Col>
     </Row>
