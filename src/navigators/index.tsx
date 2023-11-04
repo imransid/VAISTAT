@@ -1,18 +1,24 @@
 import React, { type FC } from 'react';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { NavigationContainer } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
-// import AppStackNavigator from './AppStackNavigator';
+import { type RootState } from '@/store';
+
+ import AppStackNavigator from './AppStackNavigator';
+
 import AuthStackNavigator from './AuthStackNavigator';
 
 const Navigator: FC = () => {
+  const logStatus = useSelector((state: RootState) => state.users.user.loginStatus);
+
   return (
     <NavigationContainer>
-      {/* <AppStackNavigator /> */}
       <BottomSheetModalProvider>
-        <AuthStackNavigator />
+        {logStatus ? <AppStackNavigator /> : <AuthStackNavigator />}
       </BottomSheetModalProvider>
-    </NavigationContainer>
+    </NavigationContainer >
+
   );
 };
 

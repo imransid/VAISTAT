@@ -7,7 +7,7 @@ interface ICustomTextInputProps {
   txt: string;
   color?: string;
   variant?: string;
-  fontWeight?: 'normal' | 'bold';
+  fontWeight?: 'normal' | '900' | '800' | '700' | '600' | '500' | '400' | 'bold';
 }
 
 const CustomTextItem: React.FC<ICustomTextInputProps> = ({

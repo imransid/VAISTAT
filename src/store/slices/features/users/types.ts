@@ -1,3 +1,5 @@
+import { type IResult } from '@/store/types/types';
+
 // Define the user type
 export interface UserType {
   id: string;
@@ -11,19 +13,26 @@ export interface UserType {
 
 // This type will represent the sub-state for getting a single user by ID
 export interface IUserState {
-  data: UserType | null;
+  data: IResult | null;
   isLoading: boolean;
   errors: string;
+  loginStatus: boolean;
 }
 
 // The users global state
 export interface UsersStateType {
   user: IUserState;
+
   // Later, we can add other sub-states like:
   // list,
   // create,
   // update,
   // remove
+}
+
+export interface ILogInPayload {
+  email: string;
+  password: string;
 }
 
 // export type USERS = typeof USERS; // Typescript line

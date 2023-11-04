@@ -10,7 +10,7 @@ import {
 import { TextItem } from '@/components';
 
 import { type DrawerParamList } from '../models';
-import Profile from '../screens/Profile';
+// import Profile from '../screens/Profile';
 import Setting from '../screens/Setting';
 
 import BottomTabNavigator from './BottomTabNavigator';
@@ -83,7 +83,7 @@ const CustomDrawerContent: FC<DrawerContentComponentProps> = (
         }}
         label="Profile"
         onPress={() => {
-          props.navigation.navigate(Routes.PROFILE);
+          //  props.navigation.navigate(Routes.PROFILE);
         }}
       />
       <PaperDrawer.Item
@@ -109,7 +109,7 @@ const DrawerNavigator: FC = () => {
         component={BottomTabNavigator}
         options={{ headerShown: false }}
       />
-      <Drawer.Screen name="Profile" component={Profile} options={{ headerShown: false }} />
+      {/* <Drawer.Screen name="Profile" component={Profile} options={{ headerShown: false }} /> */}
       <Drawer.Screen name="Settings" component={Setting} options={{ headerShown: false }} />
     </Drawer.Navigator>
   );

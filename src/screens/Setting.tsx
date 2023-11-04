@@ -1,18 +1,22 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
 import { Appbar } from 'react-native-paper';
 import { ScaledSheet } from 'react-native-size-matters';
+import { useDispatch } from 'react-redux';
 import { type DrawerScreenProps } from '@react-navigation/drawer';
 
 import { LeftArrow } from '@/assets';
 import { colors } from '@/theme/colors';
 
 import { type DrawerParamList } from '../models';
+import { logoutUser } from '../store/slices/features/users/slice';
 
 type Props = DrawerScreenProps<DrawerParamList>;
 
 const Setting = ({ navigation }: Props): React.ReactNode => {
+  const dispatch = useDispatch();
+
   return (
     <View>
       <Appbar.Header>
@@ -32,7 +36,9 @@ const Setting = ({ navigation }: Props): React.ReactNode => {
             <LeftArrow />
           </Col>
           <Col size={11}>
-            <Text style={Styles.txt}>Log Out</Text>
+            <TouchableOpacity onPress={() => dispatch(logoutUser())}>
+              <Text style={Styles.txt}>Log Out</Text>
+            </TouchableOpacity>
           </Col>
         </Row>
       </Grid>

@@ -1,29 +1,53 @@
 import React from 'react';
 import { TouchableOpacity, View } from 'react-native';
 import { Col, Grid, Row } from 'react-native-easy-grid';
+import Spinner from 'react-native-loading-spinner-overlay';
 import { Text } from 'react-native-paper';
+import { useDispatch, useSelector } from 'react-redux';
 import { type StackScreenProps } from '@react-navigation/stack';
 
 import { FBIcon, Google, LockUser, Logo } from '@/assets';
 import { Button, Checkbox, TextInput, TextItem } from '@/components';
 import { type AuthStackParamList } from '@/models';
+import { type RootState } from '@/store';
 import { colors } from '@/theme/colors';
+
+import ToastPopUp from '../../store/sagas/Toast.android';
+import { getUserAction } from '../../store/slices/features/users/slice';
 
 import Styles from './Styles';
 
 type Props = StackScreenProps<AuthStackParamList>;
 
 const SignIn: React.FC<Props> = ({ navigation }: Props) => {
+  const dispatch = useDispatch();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [status, setCheck] = React.useState(false);
+  const loader = useSelector((state: RootState) => state.users.user.isLoading);
+
+  const showToast = (): void => {
+    ToastPopUp('Email and Password is required.');
+  };
 
   const goToPage = (routeName: string): void => {
-    navigation.navigate(routeName);
+    if (email === '' || password === '') {
+      showToast();
+      return;
+    }
+
+    const requestData = {
+      email, // 'Akakany@gmail.com',
+      password // '123456'
+    };
+
+    dispatch(getUserAction(requestData));
   };
 
   return (
     <Grid style={Styles.container}>
+      <Spinner visible={loader} textContent={'Loading...'} />
+
       <Row style={Styles.LogoRow}>
         <View style={Styles.Logo}>
           <Logo />

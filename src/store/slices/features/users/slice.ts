@@ -1,13 +1,15 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit';
 
-import { USERS } from './constants';
-import { type UsersStateType, type UserType } from './types';
+import { type IResult } from '../../../types/types';
 
+import { USERS } from './constants';
+import { type ILogInPayload, type UsersStateType } from './types';
 const usersInitialState: UsersStateType = {
   user: {
     data: null,
     isLoading: false,
-    errors: ''
+    errors: '',
+    loginStatus: false
   }
 };
 
@@ -15,24 +17,34 @@ export const usersSlice = createSlice({
   name: USERS,
   initialState: usersInitialState,
   reducers: {
-    /* This action will trigger our saga middleware
-       and set the loader to true and reset error message.
-    */
-    getUserAction: (state: UsersStateType, { payload: id }: PayloadAction<string>) => {
+    getUserAction: (
+      state: UsersStateType,
+      { payload: ILogInPayload }: PayloadAction<ILogInPayload>
+    ) => {
       state.user.isLoading = true;
       state.user.errors = '';
+      state.user.loginStatus = false;
     },
-    getUserSuccessAction: (state: UsersStateType, { payload: user }: PayloadAction<UserType>) => {
+    getUserSuccessAction: (state: UsersStateType, payload: PayloadAction<IResult>) => {
       state.user.isLoading = false;
-      state.user.data = user;
+      state.user.data = payload.payload;
+      state.user.loginStatus = true;
+      state.user.errors = ''; // Clear any previous errors
     },
     getUserErrorAction: (state: UsersStateType, { payload: error }: PayloadAction<string>) => {
       state.user.isLoading = false;
       state.user.errors = error;
+    },
+    logoutUser: (state: UsersStateType) => {
+      state.user.isLoading = false;
+      state.user.errors = '';
+      state.user.loginStatus = false;
+      state.user.data = null;
     }
   }
 });
 
-export const { getUserAction, getUserSuccessAction, getUserErrorAction } = usersSlice.actions;
+export const { getUserAction, getUserSuccessAction, getUserErrorAction, logoutUser } =
+  usersSlice.actions;
 
 export default usersSlice.reducer;
