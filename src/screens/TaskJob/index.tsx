@@ -23,7 +23,7 @@ import {
 } from '@/store/apis/UpcomingJobApi';
 import { colors } from '@/theme/colors';
 
-import Styles from './style';
+import Styles from './Style';
 
 interface UpcomingJobExpandedListProps {
   item: IUpcomingJobExpandedListItem;
@@ -198,7 +198,7 @@ const UpcomingJobDetaiList: FC<UpcomingJobDetaiListProps> = ({
 // }
 
 type UpcommingJobScreenProps = StackScreenProps<HomePageTopStackParamList>;
-const ActiveJob: FC<UpcommingJobScreenProps> = () => {
+const TaskJob: FC<UpcommingJobScreenProps> = () => {
   const id = useSelector((state: RootState) => state.users.user.data?._id);
   const { data, isLoading, isError } = useGetUpcomingJobsByDriverIdQuery(id ?? '');
 
@@ -237,4 +237,4 @@ const ActiveJob: FC<UpcommingJobScreenProps> = () => {
   return <View style={Styles.mainContainer}>{renderEl}</View>;
 };
 
-export default ActiveJob;
+export default TaskJob;
