@@ -42,7 +42,7 @@ const DeliveryDetailist: FC<DeliveryDetailistProps> = ({
           <Image source={require('../../assets/img/order-logo.png')} />
         </Col>
         <Col size={10}>
-          <TextItem txt={item.name} variant="bodyMedium" />
+          <TextItem txt={item.name} variant="bodyMedium" fontWeight="bold" />
         </Col>
         <Col size={1}>
           <TouchableOpacity onPress={toggleExpanded}>
