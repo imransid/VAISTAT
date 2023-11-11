@@ -6,12 +6,13 @@ import {
   type IUpcomingJobs
 } from '@/models';
 
+import { Environment } from '../../enviroment/environment';
 import { type RootState } from '..';
 
 export const upcomingJobsApi = createApi({
   reducerPath: 'upcomingJobsApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: 'https://vaistat-dev-pharma-driver-api.azurewebsites.net/api/v6/driver/',
+    baseUrl: Environment.BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       const token: string = (getState() as RootState).users.user.data?.token ?? '';
       headers.set('authorization', `Bearer ${token}`);

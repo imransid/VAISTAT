@@ -14,6 +14,7 @@ import {
   REHYDRATE
 } from 'redux-persist';
 
+import { activeJobsApi } from './apis/ActiveJobsApi';
 import { upcomingJobsApi } from './apis/UpcomingJobApi';
 import rootReducers from './root-reducers';
 import rootSaga from './rootSaga';
@@ -27,7 +28,12 @@ const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 const sagaMiddleware = createSagaMiddleware();
 
-const middleware: any[] = [upcomingJobsApi.middleware, sagaMiddleware, createLogger()];
+const middleware: any[] = [
+  upcomingJobsApi.middleware,
+  activeJobsApi.middleware,
+  sagaMiddleware,
+  createLogger()
+];
 
 export const store = configureStore({
   reducer: persistedReducer,

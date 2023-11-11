@@ -36,9 +36,11 @@
 	<key>NSCameraUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your Camera.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string>This app require  location access.</string>
+	<string>$(PRODUCT_NAME) needs access to your location to give you direction of delivery and pick up point.</string>
+	<key>NSLocationUsageDescription</key>
+	<string>$(PRODUCT_NAME) needs access to your location to give you direction of delivery and pick up point.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>$(PRODUCT_NAME) needs access to your location to give you direction of delivery and pick up point.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>$(PRODUCT_NAME) needs access to your photo library for saving photos</string>
 	<key>UIAppFonts</key>
