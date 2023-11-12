@@ -79,12 +79,12 @@ const signInAPI = async (payload: ISignInPayload): Promise<LoginResponse | undef
     myHeaders.append('Content-Type', 'application/json');
 
     const requestData = {
-      email: 'JhonDoe675@email.com',
-      password: 'sssssssss',
-      username: 'JhonWick',
-      fullname: 'Jhon Doe wick',
-      first_name: 'Jhon wick',
-      last_name: 'Doe',
+      email: payload.email,
+      password: payload.password,
+      username: payload.userName,
+      fullname: payload.firstName + payload.lastName,
+      first_name: payload.firstName,
+      last_name: payload.lastName,
       driver_speak_languages: ['en', 'fr'],
       driver_availability: ['Morning', 'Afternoon'],
       driver_internet_plan: 'Yes',
