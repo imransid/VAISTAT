@@ -37,8 +37,10 @@ const SignIn: React.FC<Props> = ({ navigation }: Props) => {
     }
 
     const requestData = {
-      email, // 'Akakany@gmail.com',
-      password // '123456'
+      email: 'Akakany@gmail.com',
+      password: '123456'
+      // email, // 'Akakany@gmail.com',
+      // password // '123456'
     };
 
     dispatch(getUserAction(requestData));

@@ -49,6 +49,12 @@ export const usersSlice = createSlice({
       state.user.errors = '';
       state.user.loginStatus = false;
       state.user.data = null;
+    },
+    setSignInUser: (state: UsersStateType) => {
+      state.user.isLoading = false;
+      state.user.errors = '';
+      state.user.loginStatus = false;
+      state.user.data = null;
     }
   }
 });
@@ -58,7 +64,8 @@ export const {
   getUserSuccessAction,
   getUserErrorAction,
   logoutUser,
-  setUserAction
+  setUserAction,
+  setSignInUser
 } = usersSlice.actions;
 
 export default usersSlice.reducer;

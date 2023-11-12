@@ -3,7 +3,7 @@ import { put } from 'redux-saga/effects';
 import * as Effects from 'redux-saga/effects';
 
 import { usersSlice } from '../slices/features/users/slice';
-import { type LoginResponse } from '../types/types';
+import { type LoginResponse, type SignINApiResponse } from '../types/types';
 
 import ToastPopUp from './Toast.android';
 const { call } = Effects;
@@ -49,19 +49,50 @@ const loginAPI = async (payload: IPayload): Promise<LoginResponse | undefined> =
   }
 };
 
+// const VerifyUser = async (payload: IPayload): Promise<LoginResponse | undefined> => {
+//   try {
+//     const myHeaders = new Headers();
+//     myHeaders.append('Content-Type', 'application/json');
+
+//     const requestData = {
+//       email: payload.email,
+//       password: payload.password
+//     };
+
+//     const config = {
+//       headers: {
+//         'Content-Type': 'application/json'
+//       }
+//     };
+
+//     const response = await axios.post(apiUrl, requestData, config);
+//     return response.data;
+//   } catch (error) {
+//     console.error('Error in loginAPI:', error);
+//     return undefined; // Or you could return a specific error object here
+//   }
+// };
+
 const signInAPI = async (payload: ISignInPayload): Promise<LoginResponse | undefined> => {
   try {
     const myHeaders = new Headers();
     myHeaders.append('Content-Type', 'application/json');
 
     const requestData = {
-      email: 'Akakany@gmail.com',
-      password: '123456',
-      driver_internet_plan: '123456',
-      driver_availability: '123456',
-      driver_speak_languages: '123456',
-      fullname: '123456',
-      username: '123456'
+      email: 'JhonDoe675@email.com',
+      password: 'sssssssss',
+      username: 'JhonWick',
+      fullname: 'Jhon Doe wick',
+      first_name: 'Jhon wick',
+      last_name: 'Doe',
+      driver_speak_languages: ['en', 'fr'],
+      driver_availability: ['Morning', 'Afternoon'],
+      driver_internet_plan: 'Yes',
+      driver_has_vehicle: 'Yes',
+      driver_phone_type: 'A',
+      driver_legal_canada: 'Yes',
+      is_first_delivery_experience: 'No',
+      driver_criminal_background_checked: 'Yes'
     };
 
     const config = {
@@ -127,9 +158,9 @@ export function* loginSaga(
 
 export function* signInSaga(
   payload: ISetUserActionPayload
-): Generator<any, void, LoginResponse | undefined> {
+): Generator<any, void, SignINApiResponse | undefined> {
   try {
-    const response: LoginResponse | undefined = yield signInAPI(payload.payload);
+    const response: SignINApiResponse | undefined = yield signInAPI(payload.payload);
 
     if (response !== undefined) {
       if (response.code === 404) {
@@ -140,8 +171,9 @@ export function* signInSaga(
       }
 
       if (response.code === 200) {
+        yield put(usersSlice.actions.getUserErrorAction('Login failed')); // Handle error case
         ToastPopUp('Sign Up Successfully.');
-        // yield put(usersSlice.actions.getUserSuccessAction(response.result));
+        yield put(usersSlice.actions.setSignInUser());
       }
     } else {
       // case undefined
